@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b2ca5890fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <p class="weather-today"><i class="fas fa-sun"></i></p>
+            </div>
+            <div class="col-3">
+                <p class="weather-today"><span id="celsius-temp">30</span><a href="#" id="celsius">°C</a>
+                    |
+                    <a href="#" id="farenheit">°F</a>
+                    </br>
+                    <span id="bold-city">
+                        London
+                    </span>
+                </p>
+            </div>
+            <div class="col-6">
+                <form class="form-cities" id="search-engine">
+                    <input type="text" id="input-city" placeholder="Where are you today?" />
+                    <button type="submit" class="btn">🔍</button>
+                </form>
+                <p class="popular-cities">
+                    <strong>Popular cities</strong>
+                    </br>
+                    Paris
+                    </br>
+                    Rome
+                    </br>
+                    San Francisco
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p class="date-time" id="time">15:15</p>
+                <p class="date-time" id="date">Wednesday 24th June 2020</p>
+                <p class="date-time">Sunny</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <p>Thursday</p>
+                <p><i class="fas fa-cloud-sun"></i></p>
+                <p>22℃</p>
+                <p>Sunny spells</p>
+            </div>
+            <div class="col-sm">
+                <p>Friday</p>
+                <p><i class="fas fa-cloud-sun-rain"></i></p>
+                <p>20℃</p>
+                <p>Sunny with rain</p>
+            </div>
+            <div class="col-sm">
+                <p>Saturday</p>
+                <p><i class="fas fa-sun"></i></p>
+                <p>25℃</p>
+                <p>Sunny</p>
+            </div>
+            <div class="col-sm">
+                <p>Sunday</p>
+                <p><i class="fas fa-bolt"></i></p>
+                <p>20℃</p>
+                <p>Thunderstorm</p>
+            </div>
+            <div class="col-sm">
+                <p>Monday</p>
+                <p><i class="fas fa-cloud-sun-rain"></i></p>
+                <p>21℃</p>
+                <p>Sunny with rain</p>
+            </div>
+        </div>
+    </div>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
