@@ -11,7 +11,7 @@ function updateTime() {
   if (hours < 10) {
     hours = "0" + hours;
   } else {
-    hourse = hours + "";
+    hours = hours + "";
   }
 }
 function updateDate() {
