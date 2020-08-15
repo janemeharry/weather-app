@@ -8,6 +8,11 @@ function updateTime() {
     minutes = minutes + "";
   }
   time.innerHTML = `${hours}:${minutes}`;
+  if (hours < 10) {
+    hours = "0" + hours;
+  } else {
+    hourse = hours + "";
+  }
 }
 function updateDate() {
   let days = [
@@ -39,7 +44,7 @@ function updateDate() {
   let date = today.getDate();
   let month = months[today.getMonth()];
   let year = today.getFullYear();
-  formattedDate.innerHTML = `${day} ${date}th ${month} ${year}`;
+  formattedDate.innerHTML = `${day} ${date} ${month} ${year}`;
 }
 function search(city) {
   let apiKey = "cf895dab58ddca90926732862e56006d";
