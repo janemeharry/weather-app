@@ -8,6 +8,11 @@ p {
   text-align: center;
   font-size: 18px;
 }
+h3 {
+  color: #111d5e;
+  text-align: center;
+}
+
 .date-time {
   text-align: left;
   font-size: 30px;
