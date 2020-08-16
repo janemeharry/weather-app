@@ -177,6 +177,8 @@ function updateTemperature(response) {
   let updatedCity = document.querySelector("#bold-city");
   let apiCity = response.data.name;
   let icon = document.querySelector("#icon");
+  let windElement = document.querySelector("#wind-speed");
+  let humidityElement = document.querySelector("#humidity");
   updatedCity.innerHTML = `${apiCity}`;
   temperature.innerHTML = `${updatedTemperature}`;
   forecast.innerHTML = `${updatedForecast}`;
@@ -184,6 +186,10 @@ function updateTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  windElement.innerHTML = `Wind speed = ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
+  humidityElement.innerHTML = `Humidity = ${response.data.main.humidity}%`;
 }
 
 function updateGeolocationCity(response) {
