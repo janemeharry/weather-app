@@ -176,9 +176,14 @@ function updateTemperature(response) {
   let updatedForecast = response.data.weather[0].main;
   let updatedCity = document.querySelector("#bold-city");
   let apiCity = response.data.name;
+  let icon = document.querySelector("#icon");
   updatedCity.innerHTML = `${apiCity}`;
   temperature.innerHTML = `${updatedTemperature}`;
   forecast.innerHTML = `${updatedForecast}`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function updateGeolocationCity(response) {

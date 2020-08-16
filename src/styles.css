@@ -49,3 +49,7 @@ h3 {
   position: relative;
   top: -40px;
 }
+#icon {
+  width: 65%;
+  height: auto;
+}
