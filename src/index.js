@@ -69,9 +69,9 @@ function displayForecast(response) {
     <p><img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"/></p>
-    <p><strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+    <p><strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
     forecast.main.temp_min
-  )}°C</p>
+  )}°</p>
     <p>${forecast.weather[0].main}</p>
   </div>
   `;
@@ -82,9 +82,9 @@ function displayForecast(response) {
     <p><img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"/></p>
-    <p><strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+    <p><strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
     forecast.main.temp_min
-  )}°C</p>
+  )}°</p>
     <p>${forecast.weather[0].main}</p>
   </div>
   `;
@@ -95,9 +95,9 @@ function displayForecast(response) {
     <p><img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"/></p>
-    <p><strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+    <p><strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
     forecast.main.temp_min
-  )}°C</p>
+  )}°</p>
     <p>${forecast.weather[0].main}</p>
   </div>
   `;
@@ -109,9 +109,9 @@ function displayForecast(response) {
     <p><img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"/></p>
-    <p><strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+    <p><strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
     forecast.main.temp_min
-  )}°C</p>
+  )}°</p>
     <p>${forecast.weather[0].main}</p>
   </div>
   `;
@@ -122,9 +122,9 @@ function displayForecast(response) {
     <p><img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"/></p>
-    <p><strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+    <p><strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
     forecast.main.temp_min
-  )}°C</p>
+  )}°</p>
     <p>${forecast.weather[0].main}</p>
   </div>
   `;
@@ -152,23 +152,6 @@ function updateCity(event) {
   search(city.value);
 }
 
-function changeFarenheit(event) {
-  event.preventDefault();
-  let weatherUnit = document.querySelector("#weather-unit");
-  let currentTemp = document.querySelector("#current-temp");
-  let farenheitTemp = Math.round(currentTemp.innerHTML * (9 / 5) + 32);
-  currentTemp.innerHTML = farenheitTemp;
-  weatherUnit.innerHTML = `°F`;
-}
-
-function changeCelsius(event) {
-  event.preventDefault();
-  let weatherUnit = document.querySelector("#weather-unit");
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = Math.round((currentTemp.innerHTML - 32) * (5 / 9));
-  weatherUnit.innerHTML = `°C`;
-}
-
 function updateTemperature(response) {
   let updatedTemperature = Math.round(response.data.main.temp);
   let temperature = document.querySelector("#current-temp");
@@ -192,13 +175,39 @@ function updateTemperature(response) {
   humidityElement.innerHTML = `Humidity = ${response.data.main.humidity}%`;
 }
 
+function changeFarenheit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#bold-city");
+  let unit = "imperial";
+  let apiKey = "cf895dab58ddca90926732862e56006d";
+  let weatherUnit = document.querySelector("#weather-unit");
+  weatherUnit.innerHTML = `°F`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(updateTemperature);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
+}
+
+function changeCelsius(event) {
+  event.preventDefault();
+  let city = document.querySelector("#bold-city");
+  let unit = "metric";
+  let apiKey = "cf895dab58ddca90926732862e56006d";
+  let weatherUnit = document.querySelector("#weather-unit");
+  weatherUnit.innerHTML = `°C`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(updateTemperature);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
+}
+
 function updateGeolocationCity(response) {
   let city = document.querySelector("#bold-city");
   let updatedGeolocationCity = response.data.name;
   let unit = "metric";
   let apiKey = "cf895dab58ddca90926732862e56006d";
   city.innerHTML = `${updatedGeolocationCity}`;
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.innerHTML}&units=${unit}&appid=${apiKey}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
